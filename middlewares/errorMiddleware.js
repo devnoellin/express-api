@@ -1,5 +1,7 @@
 // middlewares/errorMiddleware.js
-const { ValidationError } = require('../handlers/apiErrors');
+const {
+    ValidationError,
+} = require('../handlers/apiErrors');
 
 const errorMiddleware = (err, req, res, next) => {
     if (err instanceof ValidationError) {
@@ -11,12 +13,7 @@ const errorMiddleware = (err, req, res, next) => {
         });
     }
 
-    return res.status(500).json({
-        result: 'error',
-        msg: 'Internal Server Error',
-        code: 'E50000',
-        errors: {},
-    });
+    return res;
 };
 
 module.exports = errorMiddleware;

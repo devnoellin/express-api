@@ -1,21 +1,44 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../../index.model');
 
-const Users = sequelize.define('Users', {
-  user_id: {
-    type: DataTypes.STRING,
-    primaryKey: true,
-  },
-  username: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  phone: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-}, {
-  tableName: 'Users',
-});
 
-module.exports = Users;
+const User = sequelize.define(
+  'User',
+  {
+    user_id: {
+      type: DataTypes.STRING,
+      primaryKey: true,
+    },
+    username: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    email: {
+      type: DataTypes.STRING,
+    },
+    phone: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    address: {
+      type: DataTypes.TEXT,
+    },
+    role: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    created_at: {
+      type: DataTypes.DATE,
+    },
+    updated_at: {
+      type: DataTypes.DATE,
+    },
+  },
+  {
+    tableName: 'Users',
+  }
+);
+
+module.exports = {
+  User,
+};
