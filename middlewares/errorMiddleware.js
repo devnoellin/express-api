@@ -13,7 +13,11 @@ const errorMiddleware = (err, req, res, next) => {
         });
     }
 
-    return res;
+    res.status(500).json({
+        result: 'error',
+        msg: 'Internal Server Error',
+        code: 'E50000',
+    });
 };
 
 module.exports = errorMiddleware;
